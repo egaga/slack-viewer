@@ -1,0 +1,11 @@
+.image {
+  max-width: 900px;
+  display: block;
+  margin: 0 auto;
+}
+
+.uploadedFile {
+  font-size: 0.9em;
+  text-align: center;
+  font-family: monospace;
+}

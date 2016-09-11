@@ -1,0 +1,44 @@
+.cmdButton {
+  padding: 1px 3px;
+  border-radius: 4px;
+  border: 1px solid #999;
+  background-color: #eee;
+  color: #464646;
+  white-space: nowrap;
+}
+
+.absoluteLink {
+  text-decoration: none;
+  font-size: 0.9em;
+  position: absolute;
+  left: -105px;
+  text-align: right;
+  width: 100px;
+}
+
+.singlePre {
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+.multilinePre {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  white-space: pre;
+  font-family: monospace;
+}
+
+.number {
+  font-family: monospace;
+  font-size: 1.2em;
+}
+
+.link {
+  color: green;
+}
+
+.youtube {
+  display: block;
+  width: 720px;
+  height: 480px;
+}

@@ -1,0 +1,50 @@
+.message {
+  white-space: pre-wrap
+}
+
+.basicComment {
+  width: 700px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.comment {
+  composes: basicComment;
+}
+
+.otherComment {
+  font-size: 0.85em;
+  composes: basicComment;
+  margin: 20px auto;
+}
+
+.imageComment {
+  composes: basicComment;
+  margin: 5px auto 40px;
+}
+
+.absoluteLink {
+  text-decoration: none;
+  font-size: 0.9em;
+  position: absolute;
+  left: -105px;
+  text-align: right;
+  width: 100px;
+}
+
+.commenterLink:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.commenterLink {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.commentLink {
+  composes: absoluteLink
+}
+
+.commenter {
+  composes: absoluteLink
+}
