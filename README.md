@@ -5,15 +5,16 @@ This is not fully serious attempt because custom parser is implemented for fun.
 
 ## Process to get data from slack channel to web host
 - get data with https://www.npmjs.com/package/slack-history-export
-- set the data to channel-data.ts
+- set the data to channel-data.js
 - `npm run render`
 - `node build/render.js > index.html`
-- use transmit to copy index.html to web host
+- copy index.html to web host (e.g. with Transmit)
 - images must be handled manually
 
 ## Developing
 
-`npm run serve` serves react app
+`npm install` sets up the project.
+`npm run serve` serves react app using webpack-dev-server
 
 ## TODO
 - create one script that syncs all data from channel to local directory
