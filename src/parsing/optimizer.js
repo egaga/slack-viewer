@@ -1,33 +1,34 @@
 // Optimize by joining consecutive "normal" nodes.
-// T  his has the following effect on the ultimate output:
+// This has the following effect on the ultimate output:
 // <span>hey</span><span> </span><span>you</span>
 // would become
 // <span>hey you</span>
 
-export function optimize(parsed) {
+export function optimize(tokens) {
   let result = [];
-  let lastNormal = false;
+  let joined = false;
 
-  for (let i in parsed) {
-    const ch = parsed[i];
+  function addIfJoined() {
+    if (joined !== false)
+      result.push({ normal: joined });
+  }
 
-    if (ch.normal) {
-      if (lastNormal !== false) {
-        lastNormal += ch.normal;
-      } else {
-        lastNormal = ch.normal;
-      }
+  for (let i in tokens) {
+    const token = tokens[i];
+
+    if (token.normal) {
+      if (joined !== false)
+        joined += token.normal;
+      else
+        joined = token.normal;
     } else {
-      if (lastNormal !== false)
-        result.push({ normal: lastNormal });
-
-      result.push(ch);
-      lastNormal = false;
+      addIfJoined();
+      result.push(token);
+      joined = false;
     }
   }
 
-  if (lastNormal !== false)
-    result.push({ normal: lastNormal});
+  addIfJoined();
 
   return result;
 }
