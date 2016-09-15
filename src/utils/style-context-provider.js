@@ -5,6 +5,7 @@ import * as React from 'react';
  */
 class StyleContextProvider extends React.Component {
 
+  //noinspection JSUnusedGlobalSymbols
   getChildContext() {
     const context = this.props.context;
 

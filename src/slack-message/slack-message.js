@@ -5,7 +5,7 @@ import styles from './style.css';
 import {renderFile, renderImage} from './file/render-file';
 import {renderToken} from './token/token-renderer'
 
-const SlackMessageView = ({message, mainAuthor}, context) => {
+const SlackMessageView = ({message, mainAuthor}) => {
   if (message.file) {
     return renderFileWithComment(renderFile(message), message, mainAuthor);
   } else if (message.image) {

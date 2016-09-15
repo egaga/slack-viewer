@@ -24,7 +24,7 @@ const context = {
 const app = appCreator(context)("komu");
 
 const content = ReactDOMServer.renderToStaticMarkup(app);
-const css = cssArray.join(" ")
+const css = cssArray.join(" ");
 
 const html =
 `<!DOCTYPE html>

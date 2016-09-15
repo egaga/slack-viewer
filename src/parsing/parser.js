@@ -10,13 +10,13 @@ const wrappers = {
 const encodings = {
   'greaterThan': '&gt;',
   'lowerThan': '&lt;'
-}
+};
 
 const separators = [" ", ',', '.'];
 
 const tokenTypes = {
   normal: "normal"
-}
+};
 
 export class SlackMessageParser {
 

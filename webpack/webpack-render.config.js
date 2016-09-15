@@ -1,6 +1,5 @@
 var path = require('path');
 var fs = require('fs');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // from :http://jlongster.com/Backend-Apps-with-Webpack--Part-I
 // without adding nodeModules to externals, html minifier does not work
@@ -10,10 +9,9 @@ fs.readdirSync('node_modules')
   .forEach(mod => nodeModules[mod] = 'commonjs ' + mod);
 
 module.exports = {
-  entry: ['babel-polyfill', './index.js'],
+  entry: ['babel-polyfill', './render.js'],
   target: 'node',
   externals: nodeModules, // externals allows you to specify dependencies for your library that are not resolved by webpack, but become dependencies of the output. This means they are imported from the environment during runtime.
-  entry: './render.js',
   output: {
     path: __dirname,
     filename: '/build/render.js'
