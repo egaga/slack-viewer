@@ -6,9 +6,6 @@ export function mapToJsx(part, index) {
   if (part.url) return <a key={index} className={styles.link} href={part.url}>{part.url}</a>;
   if (part.italics) return <i key={index}>{part.italics}</i>;
   if (part.smiley) return <small key={index}>{part.smiley}</small>;
-
-  if (part.multiple) return <span key={index}>{part.multiple.map((x, innerIndex) => mapToJsx(x, innerIndex) )}</span>;
-
   if (part.multiline) return <div key={index} className={styles.multilinePre}>{part.multiline}</div>;
   if (part.pre) return <span key={index} className={styles.singlePre}>{part.pre}</span>;
   if (part.userReference) return <span key={index}>@slack_käyttäjä</span>;
