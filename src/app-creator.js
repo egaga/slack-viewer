@@ -15,7 +15,7 @@ import StyleContextProvider from './utils/style-context-provider';
  "date": 1465206895000
  }]
  */
-import {messages} from '../slack-data/channel-data';
+import messages from '../slack-data/channel-data';
 
 // Get all style content so that the isomorphic style provider can put them into React context
 const getStyles = modules => modules.keys().map(mod => require(mod));

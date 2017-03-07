@@ -5,6 +5,7 @@ This is not fully serious attempt because custom parser is implemented for fun.
 
 ## Process to get data from slack channel to web host
 - get data with https://www.npmjs.com/package/slack-history-export
+- get your slack api token from https://api.slack.com/tokens
 - set the data to channel-data.js
 - `npm run render`
 - `node build/render.js > index.html`

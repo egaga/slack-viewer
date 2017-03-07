@@ -19,12 +19,23 @@
 .singlePre {
   white-space: pre-wrap;
   font-family: monospace;
+  color: darkred;
+  background-color: #eeeeee;
+  border: 1px solid gray;
+  padding:2px;
+  border-radius: 3px;
 }
 
 .multilineWrapper {
   border-radius: 5px;
   border: 1px solid #dedede;
   padding: 0 0 15px 0
+}
+
+.quoteWrapper {
+  border-left: 5px solid lightgray;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 .multilinePre {

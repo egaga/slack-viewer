@@ -14,14 +14,18 @@ export function optimize(tokens) {
   }
 
   for (let i in tokens) {
-    const token = tokens[i];
+    let token = tokens[i];
+
+    if (token.paragraph) {
+        token = { paragraph: true, content: optimize(token.content) };
+    }
 
     if (token.normal) {
       if (joined !== false)
-        joined += token.normal;
+          joined += token.normal;
       else
-        joined = token.normal;
-    } else {
+          joined = token.normal;
+   } else {
       addIfJoined();
       result.push(token);
       joined = false;

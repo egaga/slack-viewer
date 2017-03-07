@@ -2,6 +2,16 @@ import React from 'react';
 import styles from './style.css';
 
 export function mapToJsx(part, index) {
+  if (part.paragraph) return (
+      <div key={index}>
+          {renderToken(part.content)}
+      </div>
+  );
+  if (part.quote) return (
+    <div key={index} className={styles.quoteWrapper}>
+      {renderToken(part.quote)}
+    </div>
+  );
   if (part.normal) return <span key={index}>{part.normal}</span>;
   if (part.url) return <a key={index} className={styles.link} href={part.url}>{part.url}</a>;
   if (part.italics) return <i key={index}>{part.italics}</i>;

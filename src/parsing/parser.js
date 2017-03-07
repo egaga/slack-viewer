@@ -12,7 +12,7 @@ const encodings = {
   'lowerThan': '&lt;'
 };
 
-const separators = [" ", ',', '.'];
+const separators = [" ", ',', '.', '\n'];
 
 const tokenTypes = {
   normal: "normal"
@@ -25,6 +25,17 @@ export class SlackMessageParser {
     this.parsed = [];
     this.currentWrapper = null;
     this.currentWord = "";
+    this.currentParagraph = [];
+    this.adder = function (content) {
+      this.currentParagraph.push(content)
+    };
+    this.closeParagraph = function() {
+      if (this.currentWord.length > 0)
+          this.addCurrentWord(tokenTypes.normal);
+
+      this.parsed.push({paragraph: true, content: this.currentParagraph});
+      this.currentParagraph = [];
+    };
   }
 
   readChar() {
@@ -36,7 +47,7 @@ export class SlackMessageParser {
   addWord(word, type) {
     const elem = {};
     elem[type] = word;
-    this.parsed.push(elem);
+    this.adder(elem);
   }
 
   addCurrentWord(type) {
@@ -113,6 +124,16 @@ export class SlackMessageParser {
     return false;
   }
 
+  matchParagraphEnd() {
+      if (this.isNextChars("\n")) {
+          this.closeParagraph();
+          this.popChars(1);
+          return true;
+      }
+
+      return false;
+  }
+
   matchSeparator() {
     for (let index in separators) {
       const matched = this.matchNextChars(separators[index], tokenTypes.normal);
@@ -132,6 +153,7 @@ export class SlackMessageParser {
       this.matchWrapperEnds() ||
       this.readCharToCurrentWord();
     } else {
+      this.matchParagraphEnd() ||
       this.matchWrapperStarts() ||
       this.matchEncoding() ||
       this.matchSeparator() ||
@@ -142,8 +164,7 @@ export class SlackMessageParser {
   parseStructure() {
     while (this.input.length > 0) this.matchInput();
 
-    if (this.currentWord.length > 0)
-      this.addCurrentWord(tokenTypes.normal);
+    this.closeParagraph(); // Tuleeko tästä joskus ylimääräinen? Tyhjälle?
 
     return this.parsed;
   }

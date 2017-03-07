@@ -17,6 +17,10 @@ function mapUrl(word) {
     return undefined;
 }
 
+function mapQuote(p) {
+    return p.length > 0 && p[0].greaterThan ? { quote: parseDetails(p.slice(1)) } : undefined;
+}
+
 function asShortcut(word, key) {
   return word.toLowerCase().startsWith(key) ? { shortcut: word } : false;
 }
@@ -24,7 +28,8 @@ function asShortcut(word, key) {
 export function parseDetails(structure) {
   return structure.reduce((previous, token) => {
     const improvedToken =
-          token.normal ? mapWord(token.normal) || token
+          token.paragraph ? mapQuote(token.content) || { paragraph: true, content: parseDetails(token.content) }
+        : token.normal ? mapWord(token.normal) || token
         : token.pre    ? mapWord(token.pre)    || token
         : token.url    ? mapUrl(token.url)     || token
         : token;
