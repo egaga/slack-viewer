@@ -27,6 +27,7 @@
     "html-webpack-plugin": "2.22.0",
     "isomorphic-style-loader": "1.0.0",
     "postcss-loader": "0.13.0",
+    "slack-history-export": "0.4.1",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.15.1"
   },
