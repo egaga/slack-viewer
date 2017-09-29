@@ -21,7 +21,7 @@ const context = {
   }
 };
 
-const app = appCreator(context)("komu");
+const app = appCreator(context);
 
 const content = ReactDOMServer.renderToStaticMarkup(app);
 const css = cssArray.join(" ");
@@ -34,18 +34,8 @@ const html =
 
     <title>Slack channel viewer</title>
     <style type="text/css">${css}</style>
-    <style type="text/css">
-        h1 {
-            text-align: center;
-        }
-        .introduction-to-channel {
-            font-size: 15px;
-            font-weight: normal;
-        }
-    </style>
 </head>
 <body>
-    <h1>#abletonlive <span class="introduction-to-channel">komu opettaa musiikin teoriaa ja Abletonin käyttöä.</span></h1>
     <div id="channel-container">
       ${content}
     </div>

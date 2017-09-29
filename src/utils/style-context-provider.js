@@ -1,5 +1,7 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
+const emptyFunction = () => {};
 /**
  * Provides React context for inserting styles when using universal-style-loader.
  */
@@ -32,15 +34,15 @@ class StyleContextProvider extends React.Component {
 }
 
 StyleContextProvider.propTypes = {
-  styles: React.PropTypes.array,
-  context: React.PropTypes.shape({
-    insertCss: React.PropTypes.func,
+  styles: PropTypes.array,
+  context: PropTypes.shape({
+    insertCss: PropTypes.func,
   }),
-  error: React.PropTypes.object,
+  error: PropTypes.object,
 };
 
 StyleContextProvider.childContextTypes = {
-  insertCss: React.PropTypes.func.isRequired,
+  insertCss: PropTypes.func.isRequired,
 };
 
 export default StyleContextProvider;

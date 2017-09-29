@@ -15,17 +15,17 @@ import StyleContextProvider from './utils/style-context-provider';
  "date": 1465206895000
  }]
  */
-import messages from '../slack-data/channel-data';
+import {messages, mainAuthor} from '../slack-data/channel-data';
 
 // Get all style content so that the isomorphic style provider can put them into React context
-const getStyles = modules => modules.keys().map(mod => require(mod));
+const getStyles = requireContext => requireContext.keys().map(requireContext);
 const styles = getStyles(require.context('./', true, /\.css$/));
 
 /*
  * Create application root element with given style context
  * @context may define a callback function to get used React styles
  */
-export const appCreator = context => mainAuthor => (
+export const appCreator = context => (
   <StyleContextProvider context={context} styles={styles}>
     <SlackChannel mainAuthor={mainAuthor} messages={messages} />
   </StyleContextProvider>

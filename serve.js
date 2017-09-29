@@ -18,7 +18,7 @@ const context = {
   }
 };
 
-const app = appCreator(context)("komu");
+const app = appCreator(context);
 
 const channelContainer = document.getElementById('channel-container');
 if (!channelContainer) throw "Channel container";

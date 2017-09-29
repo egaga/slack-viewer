@@ -7,6 +7,15 @@ This is not fully serious attempt because custom parser is implemented for fun.
 - get data with https://www.npmjs.com/package/slack-history-export
 - get your slack api token from https://api.slack.com/tokens
 - set the data to channel-data.js
+
+```
+export const mainAuthor = 'Henkka';
+export const messages = [
+    { ts: '242', user: 'Henkka',text: 'Here is my opinion' }, 
+    { ts: '555', user: 'Reetta', text: 'No, it is mine!' }
+];
+```
+
 - `npm run render`
 - `node build/render.js > index.html`
 - copy index.html to web host (e.g. with Transmit)

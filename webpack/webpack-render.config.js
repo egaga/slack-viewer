@@ -14,27 +14,36 @@ module.exports = {
   externals: nodeModules, // externals allows you to specify dependencies for your library that are not resolved by webpack, but become dependencies of the output. This means they are imported from the environment during runtime.
   output: {
     path: __dirname,
-    filename: '/build/render.js'
+    filename: 'build/render.js'
   },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        babelrc: false,
-        query: {
-          presets: ['react', 'es2015', 'stage-0', 'stage-3'],
-          plugins: ['transform-runtime']
-        },
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        loaders: [
-          'isomorphic-style-loader',
-          'css-loader?modules&localIdentName=[name]_[local]_[hash:base64:3]',
-          'postcss-loader'
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                },
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    'isomorphic-style-loader',
+                    {
+                      loader: 'css-loader',
+                      options: {
+                          modules: true,
+                          importLoaders: 1,
+                          localIdentName: "[name]--[local]--[hash:base64:8]"
+                      },
+                    },
+                    'postcss-loader'
+                ]
+            }
         ]
-      }]
-  }
+    },
 };
