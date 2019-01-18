@@ -29,9 +29,9 @@
     "isomorphic-style-loader": "^4.0.0",
     "postcss-loader": "0.13.0",
     "prop-types": "^15.6.0",
-    "slack-history-export": "0.4.1",
+    "slack-history-export": "^1.1.1",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": ">=3.1.11"
   },
   "dependencies": {
     "react": "16.0.0",
