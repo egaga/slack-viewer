@@ -31,7 +31,8 @@
     "prop-types": "^15.6.0",
     "slack-history-export": "^1.1.1",
     "webpack": "^3.6.0",
-    "webpack-dev-server": ">=3.1.11"
+    "webpack-dev-server": ">=3.1.11",
+    "tiny-json-http": "7.0.0"
   },
   "dependencies": {
     "react": ">=16.0.1",
