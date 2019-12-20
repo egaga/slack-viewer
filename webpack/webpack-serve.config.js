@@ -6,7 +6,7 @@ var port = "9091";
 var devPublicPath = 'http://localhost:' + port + '/assets/';
 
 module.exports = {
-    entry: ['babel-polyfill', './serve.js'],
+    entry: ['@babel/polyfill', './serve.js'],
     output: {
         path: __dirname,
         filename: './app.js',
@@ -26,7 +26,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env']
+                        babelrc: false,
+                        presets: ["@babel/preset-env", "@babel/preset-react"]
                     }
                 },
                 exclude: /node_modules/,
@@ -39,12 +40,18 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
-                            importLoaders: 1,
-                            localIdentName: "[name]--[local]--[hash:base64:8]"
+                            modules: {
+                                localIdentName:  "[name]--[local]--[hash:base64:8]"
+                            },
+                            importLoaders: 1
                         }
                     },
-                    'postcss-loader'
+                    'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                        }
+                    }
                 ]
             }
         ]

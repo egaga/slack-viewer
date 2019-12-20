@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SlackMessageView from '../slack-message/slack-message';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import styles from './style.css';
 
 const messageView = (msg, mainAuthor) => (
