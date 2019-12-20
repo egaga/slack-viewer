@@ -17,14 +17,14 @@ export const messages = [
 ```
 
 - `npm run render`
-- `node build/render.js > index.html`
+- `node webpack/build/render.js > index.html`
 - copy index.html to web host (e.g. with Transmit)
 - images must be handled manually
 
 ## Developing
 
-`npm install` sets up the project.
-`npm run serve` serves react app using webpack-dev-server
+`yarn` sets up the project.
+`npm run serve` serves react app using webpack-dev-server in: http://localhost:9091/assets/index.html
 
 ## TODO
 - create one script that syncs all data from channel to local directory

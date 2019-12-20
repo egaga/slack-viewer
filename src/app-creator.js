@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 import {SlackChannel} from './slack-channel/slack-channel';
-import StyleContextProvider from './utils/style-context-provider';
+import StyleContext from 'isomorphic-style-loader/StyleContext';
 
 /*
  Channel data is an array of slack messages, e.g. a channel with one message could have the following properties
@@ -17,16 +17,12 @@ import StyleContextProvider from './utils/style-context-provider';
  */
 import {messages, mainAuthor} from '../slack-data/channel-data';
 
-// Get all style content so that the isomorphic style provider can put them into React context
-const getStyles = requireContext => requireContext.keys().map(requireContext);
-const styles = getStyles(require.context('./', true, /\.css$/));
-
 /*
  * Create application root element with given style context
  * @context may define a callback function to get used React styles
  */
-export const appCreator = context => (
-  <StyleContextProvider context={context} styles={styles}>
+export const appCreator = ({insertCss}) => (
+  <StyleContext.Provider value={{ insertCss }}>
     <SlackChannel mainAuthor={mainAuthor} messages={messages} />
-  </StyleContextProvider>
+  </StyleContext.Provider>
 );
