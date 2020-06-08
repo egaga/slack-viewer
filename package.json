@@ -35,7 +35,8 @@
     "kind-of": "~6.0.3",
     "minimist": "~0.2.1",
     "react": ">=16.0.1",
-    "react-dom": ">=16.0.1"
+    "react-dom": ">=16.0.1",
+    "websocket-extensions": "0.1.4"
   },
   "resolutions": {
     "tiny-json-http": "7.1.2"
